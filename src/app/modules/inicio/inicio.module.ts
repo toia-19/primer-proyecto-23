@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { InicioRoutingModule } from './inicio-routing.module';
 import { InicioComponent } from './pages/inicio/inicio.component';
 
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,11 @@ import { InicioComponent } from './pages/inicio/inicio.component';
   ],
   imports: [
     CommonModule,
-    InicioRoutingModule
+    InicioRoutingModule,
+    MatCardModule
+  ],
+  exports: [
+    MatCardModule
   ]
 })
 export class InicioModule { }
