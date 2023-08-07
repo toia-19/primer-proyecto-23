@@ -13,7 +13,14 @@ export class InicioComponent {
 
   // INICIALIZA LA PROPIEDAD INFO
   constructor(){
-    this.info = []
+    this.info = [
+      {
+        titulo: "Tarjeta 1",
+        descripcion: "Foto de un Golden Retriever",
+        imagen:"https://www.hepper.com/wp-content/uploads/2021/11/golden-retriever_Shutterstock.jpg",
+        alt:"Golden Retriever"
+      }
+    ]
   }
 
   // EVENTO DE CONSTRUCCIÓN/ INICIALIZACIÓN
