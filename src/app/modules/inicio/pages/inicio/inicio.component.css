@@ -1,6 +1,7 @@
 .container{
     display: flex;
     padding: 10px;
+    justify-content: center;
 }
 
 .titulo{
@@ -13,4 +14,8 @@
     padding: 15px;
     border-radius: 8px;
     margin: 10px;
+}
+
+p{
+    padding: 5px;
 }

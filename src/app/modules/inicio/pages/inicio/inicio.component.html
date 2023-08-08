@@ -5,9 +5,10 @@
             <div *ngFor="let i of info" class="contenido">
                 <mat-card class="example-card">
                     <mat-card-header>
-                        <mat-card-title class="titulo">{{i.titulo}}</mat-card-title>
+                        <mat-card-title class="titulo">{{i.raza}}</mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}" width="100%">
+                    <!-- APLICAMOS INTERPOLACIÓN ej: {{i.imagen}} -->
+                    <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}"  width="100%">
                     <mat-card-content>
                         <p>
                             {{i.descripcion}}
