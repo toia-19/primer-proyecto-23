@@ -8,6 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // COMPONENTES GLOBALES
 import { SharedModule } from './shared/shared.module';
 
+// FIREBASE
+import { environment } from 'src/environments/environment'; // CONECTAMOS CON LA BD
+import { AngularFireModule } from '@angular/fire/compat'; // IMPORTACIÓN FIRESTORE (DB nube)
+import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // IMPORTACIÓN AUTENTIFICACIÓN
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'; // IMPORTACIÓN STORAGE (img)
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,8 +22,12 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // IMPORTAR SHARED
-    SharedModule
+    // IMPORTAR COMPONENTES GLOBALES
+    SharedModule,
+    // MÓDULOS DE FIREBASE
+    AngularFireModule.initializeApp(environment.firebaseConfig), // INICIALIZA FIREBASE
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
