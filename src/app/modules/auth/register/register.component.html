@@ -6,16 +6,17 @@
         <mat-form-field appearance="fill">
             <mat-label>Ingrese un nombre de usuario:</mat-label>
             <!-- input para tomar el nombre -->
-            <input [(ngModel)]="usuarios.nombre" matInput>
+            <input [(ngModel)]="usuarios.nombre" matInput type="text" required>
         </mat-form-field>
         
         <mat-form-field>
             <mat-label>Ingrese una contraseña:</mat-label>
             <!-- input para tomar contraseña -->
-            <input [(ngModel)]="usuarios.contrasena" matInput [type]="hide ? 'password' : 'text'">
+            <input [(ngModel)]="usuarios.contrasena" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
+            <mat-hint align="start">Mínimo:6/{{input.value.length}}</mat-hint>
         </mat-form-field>
         
         <button class="boton" mat-raised-button color="primary" (click)="registrarse()">Registrar</button>
