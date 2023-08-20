@@ -5,17 +5,17 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Ingrese un nombre de usuario:</mat-label>
-            <input matInput>
+            <input [(ngModel)]="usuarios.nombre" matInput required>
         </mat-form-field>
         
         <mat-form-field>
             <mat-label>Ingrese una contraseña:</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
+            <input [(ngModel)]="usuarios.contrasena" matInput [type]="hide ? 'password' : 'text'" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
         
-        <button class="boton" mat-raised-button color="primary">Registrar</button>
+        <button class="boton" mat-raised-button color="primary" (click)="registrarse()">Registrar</button>
     </div>
 </div>
