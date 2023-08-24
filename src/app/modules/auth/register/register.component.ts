@@ -11,7 +11,7 @@ export class RegisterComponent {
   hide = true; // input de contraseña
 
   // definimos de forma pública el servicioAuth
-  constructor(public servicioAuth: AuthService){}
+  constructor(public servicioAuth: AuthService) { }
 
   // importación del modelo
   usuarios: Usuario = {
@@ -22,16 +22,21 @@ export class RegisterComponent {
 
   // tomando nuevo registro
   // ASYNC = ASINCRONICO
-  async registrarse(){
+  async registrarse() {
     const credenciales = {
       nombre: this.usuarios.nombre,
       contrasena: this.usuarios.contrasena
     };
 
     const res = await this.servicioAuth.registrar(credenciales.nombre, credenciales.contrasena)
-    .then(res =>{
-      alert("Ha agregado un nuevo usuario con éxito :)");
-    })
+      // método THEN devuelve misma promesa
+      .then(res => {
+        alert("Ha agregado un nuevo usuario con éxito :)");
+      })
+      // método CATCH creará un error en caso de que algo salga mal
+      .catch(error =>
+        alert("Hubo un error al crear el usuario :( \n" + error)
+      );
 
     console.log(res)
   }
