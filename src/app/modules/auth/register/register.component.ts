@@ -16,6 +16,8 @@ export class RegisterComponent {
     contrasena: ''
   }
 
+  uid = '';
+
   // servicioAuth referencia a nuestro servicio Auth
   constructor(public servicioAuth: AuthService) {
   }
@@ -37,6 +39,8 @@ export class RegisterComponent {
       alert("Hubo un error al cargar el usuario :( \n"+error)
     );
 
-    console.log(res);
+    const uid = await this.servicioAuth.getUid();
+
+    this.usuarios.uid = uid;
   }
 }
