@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from 'src/app/models/usuario';
+import { FirestoreService } from 'src/app/shared/services/firestore.service';
 
 @Component({
   selector: 'app-register',
@@ -18,8 +19,14 @@ export class RegisterComponent {
 
   uid = '';
 
+  // creamos una nueva colección para usuarios
+  coleccionUsuarios: Usuario[] = [];
+
   // servicioAuth referencia a nuestro servicio Auth
-  constructor(public servicioAuth: AuthService) {
+  constructor(
+    public servicioAuth: AuthService, 
+    public servicioFirestore: FirestoreService
+    ) {
   }
 
   // tomamos nuevos registros y mostramos los resultados
@@ -42,5 +49,24 @@ export class RegisterComponent {
     const uid = await this.servicioAuth.getUid();
 
     this.usuarios.uid = uid;
+
+    // GUARDA EL NUEVO USUARIO
+    this.guardarUser();
+  }
+
+  // función que agrega NUEVO USUARIO
+  async guardarUser(){
+    this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
+    .then(res => {
+      console.log(this.usuarios)
+    })
+    .catch(error =>{
+      console.log('Error =>', error)
+    })
+  }
+
+  async ngOnInit(){
+    const uid = await this.servicioAuth.getUid();
+    console.log(uid);
   }
 }
