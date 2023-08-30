@@ -13,4 +13,16 @@ export class AuthService {
   registrar(nombre: string, contrasena: string){
     return this.auth.createUserWithEmailAndPassword(nombre,contrasena);
   }
+
+  // función asincronica para tomar UID
+  async getUid(){
+    // CURRENTUSER -> JUNTO A LA PROMESA, GENERA CAPTURA
+    const user = await this.auth.currentUser;
+
+    if(user == null){
+      return null;
+    }else{
+      return user.uid;
+    }
+  }
 }
