@@ -6,7 +6,22 @@
         <!-- Nombre -->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese un nombre de usuario:</mat-label>
+            <input [(ngModel)]="usuarios.nombre1" matInput required>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese un email de usuario:</mat-label>
             <input [(ngModel)]="usuarios.nombre" matInput required>
+        </mat-form-field>
+
+        <!-- Rol -->
+        <mat-form-field>
+            <mat-label>Seleccione un rol:</mat-label>
+            <mat-select [(ngModel)]="usuarios.rol" required>
+              <mat-option value="vis">Visitante</mat-option>
+              <mat-option value="adm">Administrador</mat-option>
+            </mat-select>
         </mat-form-field>
         
         <!-- Contraseña -->

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from 'src/app/models/usuario';
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,16 +12,19 @@ import { FirestoreService } from 'src/app/shared/services/firestore.service';
 export class RegisterComponent {
   hide = true; // input de contraseña
 
-  // definimos de forma pública el servicioAuth y servicioFirestore
+  // definimos de forma pública el servicioAuth, servicioFirestore, servicio de ruteo
   constructor(
     public servicioAuth: AuthService,
-    public servicioFirestore: FirestoreService
+    public servicioFirestore: FirestoreService,
+    public router: Router
     ) { }
 
   // importación del modelo
   usuarios: Usuario = {
     uid: '',
+    nombre1: '',
     nombre: '',
+    rol: '',
     contrasena: ''
   }
 
@@ -41,6 +45,9 @@ export class RegisterComponent {
       // método THEN devuelve misma promesa
       .then(res => {
         alert("Ha agregado un nuevo usuario con éxito :)");
+
+        // llamamos una nueva ruta -> nos redirigimos
+        this.router.navigate(["/inicio"]);
       })
       // método CATCH creará un error en caso de que algo salga mal
       .catch(error =>
