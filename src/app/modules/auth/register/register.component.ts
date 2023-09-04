@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from 'src/app/models/usuario';
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,8 @@ export class RegisterComponent {
   usuarios: Usuario = {
     uid: '',
     nombre: '',
+    email: '',
+    rol: '',
     contrasena: ''
   }
 
@@ -25,21 +28,24 @@ export class RegisterComponent {
   // servicioAuth referencia a nuestro servicio Auth
   constructor(
     public servicioAuth: AuthService, 
-    public servicioFirestore: FirestoreService
+    public servicioFirestore: FirestoreService,
+    public router: Router
     ) {
   }
 
   // tomamos nuevos registros y mostramos los resultados
   async registrarse() {
     const credenciales = {
-      nombre: this.usuarios.nombre,
+      email: this.usuarios.email,
       contrasena: this.usuarios.contrasena
     };
 
-    const res = await this.servicioAuth.registrar(credenciales.nombre, credenciales.contrasena)
+    const res = await this.servicioAuth.registrar(credenciales.email, credenciales.contrasena)
     // el método THEN nos devuelve el mismo valor que guarda la promesa
     .then(res =>{
       alert("Ha agregado un nuevo usuario con éxito :)");
+
+      this.router.navigate(['/inicio']);
     })
     // el método CATCH creará un error en caso de que las cosas salgan mal
     .catch(error => 
