@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   hide = true; // input de contraseña
@@ -22,8 +22,8 @@ export class RegisterComponent {
   // importación del modelo
   usuarios: Usuario = {
     uid: '',
-    nombre1: '',
     nombre: '',
+    email: '',
     rol: '',
     contrasena: ''
   }
@@ -37,11 +37,11 @@ export class RegisterComponent {
   // ASYNC = ASINCRONICO
   async registrarse() {
     const credenciales = {
-      nombre: this.usuarios.nombre,
+      email: this.usuarios.email,
       contrasena: this.usuarios.contrasena
     };
 
-    const res = await this.servicioAuth.registrar(credenciales.nombre, credenciales.contrasena)
+    const res = await this.servicioAuth.registrar(credenciales.email, credenciales.contrasena)
       // método THEN devuelve misma promesa
       .then(res => {
         alert("Ha agregado un nuevo usuario con éxito :)");
