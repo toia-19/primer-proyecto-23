@@ -14,13 +14,13 @@ const routes: Routes = [
   },
   {
     path:"",loadChildren:()=>import('./modules/auth/auth.module').then(m=>m.AuthModule)
+  },
+  {
+    path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)
+  },
+  {
+    path:"",loadChildren:()=>import('./modules/productos/productos.module').then(m=>m.ProductosModule)
   }
-  // PATH -> PALABRA RESERVADA PARA LA RUTA EN SÍ
-  // LOADCHILDREN -> CARGA PEREZOSA
-  // FUNCIÓN IMPORTA RUTA ESPECÍFICA DEL MÓDULO
-  // MÉTODO THEN -> PROMETE UN RESULTADO
-  // M => M.NOMBREMODULO
-  // -> M PALABRA RESERVADA PARA MÓDULOS
 ];
 
 @NgModule({
