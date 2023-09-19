@@ -14,6 +14,12 @@ const routes: Routes = [
   },
   {
     path:"",loadChildren:()=>import('./modules/auth/auth.module').then(m=>m.AuthModule)
+  },
+  {
+    path:"",loadChildren:()=>import('./modules/productos/productos.module').then(m=>m.ProductosModule)
+  },
+  {
+    path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)
   }
 ];
 
