@@ -9,6 +9,21 @@
     <!-- ENRUTAMOS PÁGINAS -->
     <button mat-button routerLink="/inicio">Inicio</button>
     <button mat-button routerLink="/nosotros">Nosotros</button>
+    
+    <!-- Este botón lleva al menu despegable-->
+    <button mat-button [matMenuTriggerFor]="menu">Productos</button>
+
+    <mat-menu #menu="matMenu">
+        <!-- Mostrará todos los productos disponibles -->
+        <button mat-menu-item routerLink="/productos">Todos</button>
+
+        <!-- Categorías en los productos -->
+        <button mat-menu-item routerLink="/collares">Collares</button>
+        <button mat-menu-item routerLink="/indumentaria">Indumentaria</button>
+        <button mat-menu-item routerLink="/juguetes">Juguetes</button>
+    </mat-menu>
+
+    <button mat-button routerLink="/admin">Administrador</button>
 
     <span class="example-spacer"></span>
 
