@@ -35,4 +35,8 @@ export class CrudService {
     // map -> recorre esos datos, los lee
     return this.productosColeccion.snapshotChanges().pipe(map(action => action.map(a => a.payload.doc.data())))
   }
+
+  // función para EDITAR PRODUCTO
+
+  // función para ELIMINAR PRODUCTO
 }

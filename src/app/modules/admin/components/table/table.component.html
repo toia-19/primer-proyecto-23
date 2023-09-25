@@ -6,59 +6,79 @@
             <th scope="col">Imagen</th>
             <th scope="col">Descripción</th>
             <th scope="col">Precio</th>
+            <th scope="col">Categoría</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let col of coleccionProductos">
             <!-- Vamos a aplicar interpolación -->
             <th scope="row">1</th>
-            <td>nombre</td>
-            <td>imagen</td>
-            <td>descripción</td>
-            <td>precio</td>
-            <td>acciones</td>
+            <td><img src="{{col.imagen}}" alt="{{col.alt}}" width="100px"></td>
+            <td>{{col.nombre}}</td>
+            <td>{{col.descripcion}}</td>
+            <td>{{col.precio}}</td>
+            <td>{{col.categoria}}</td>
+
+            <!-- BOTONES PARA EDITAR Y ELIMINAR -->
+            <td>
+                <button type="button" title="Editar" class="btn btn-outline-success"><mat-icon>edit</mat-icon></button>
+                <button type="button" title="Eliminar" class="btn btn-outline-danger"><mat-icon>delete</mat-icon></button>
+            </td>
         </tr>
     </tbody>
 </table>
 
-<!-- Botón que llama al modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<!-- BOTÓN PARA LLAMAR MODAL AGREGAR PRODUCTOS -->
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
     Agregar producto
 </button>
 
-<!-- Modal para agregar productos -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal para agregar PRODUCTOS -> muestra FORMULARIO -->
+<div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo producto</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div [formGroup]="producto" class="modal-body">
                 <!-- Recibe los nuevos valores -->
                 <div class="mb-3">
                     <label class="form-label">Ingrese nombre del producto:</label>
-                    <input type="text">
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese nombre del producto...">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ingrese una imagen del producto:</label>
-                    <input type="text">
+                    <input type="text" class="form-control" formControlName="imagen" placeholder="Ingrese vínculo de una imagen...">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese un texto alternativo para la imagen:</label>
+                    <input type="text" class="form-control" formControlName="alt" placeholder="Ingrese texto alternativo...">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ingrese descripción:</label>
-                    <input type="text">
+                    <input type="text" class="form-control" formControlName="descripcion" placeholder="Ingrese una descripción...">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Ingrese precio:</label>
-                    <input type="text">
+                    <input type="number" class="form-control" formControlName="precio" placeholder="Ingrese un precio...">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ingrese categoría del producto</label>
+                    <select class="form-control" class="form-select" formControlName="categoria">
+                        <option selected>Elija una opción</option>
+                        <option value="collares">Collares</option>
+                        <option value="juguetes">Juguetes</option>
+                        <option value="indumentaria">Indumentaria</option>
+                    </select>
                 </div>
             </div>
 
-            <!-- Corresponde a las acciones -->
+            <!-- Corresponde a las ACCIONES -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-outline-primary" (click)="agregarProducto()">Guardar</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
