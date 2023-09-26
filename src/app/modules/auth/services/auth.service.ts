@@ -12,7 +12,7 @@ export class AuthService {
   // FUNCIÓN PARA LOGIN
   iniciarSesion(email: string, contrasena: string){
     // valida email y contraseña de la BD
-    return this.auth.signInWithEmailAndPassword(email, contrasena)
+    return this.auth.signInWithEmailAndPassword(email, contrasena);
   }
 
   // FUNCIÓN PARA REGISTER

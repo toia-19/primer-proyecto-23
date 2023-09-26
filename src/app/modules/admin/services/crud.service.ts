@@ -37,6 +37,12 @@ export class CrudService {
   }
 
   // función para EDITAR PRODUCTO
+  /*Envíamos el id del producto seleccionado y su nueva información*/
+  modificarProducto(idProducto: string, nuevaData: Producto){
+    return this.database.collection('productos').doc(idProducto).update(nuevaData)
+  }
 
   // función para ELIMINAR PRODUCTO
+  eliminarProducto(){
+  }
 }
