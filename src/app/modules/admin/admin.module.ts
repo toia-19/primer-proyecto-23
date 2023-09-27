@@ -4,6 +4,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { TableComponent } from './components/table/table.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,12 +14,16 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     AdminComponent,
     TableComponent,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

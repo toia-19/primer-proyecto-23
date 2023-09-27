@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs/operators'; // mapea valores -> similar a la función de un arreglo
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,29 @@ export class CrudService {
 
   // CRUD -> PRODUCTOS
   crearProducto(producto: Producto){
+    return new Promise(async(resolve, reject) =>{
+      try{
+        // creamos constante que guarde un nuevo ID
+        const idProducto = this.database.createId();
+
+        // se lo asignamos al atributo ID de la interfaz Producto
+        producto.idProducto = idProducto;
+
+        const resultado = await this.productosCollection.doc(idProducto).set(producto)
+
+        resolve(resultado);
+      } catch (error){
+        reject(error);
+      }
+    })
+  }
+
+  obtenerProducto(){
+    // snapshotChanges -> toma captura del estado de los datos
+    // pipe -> funciona como tubería, retorna el nuevo arreglo
+    // map -> "mapea" o recorre esa nueva información
+    // a -> resguarda la nueva información y la envía
+    return this.productosCollection.snapshotChanges().
+    pipe(map(action => action.map(a => a.payload.doc.data())))
   }
 }

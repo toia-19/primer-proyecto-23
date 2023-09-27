@@ -6,6 +6,7 @@
         <th scope="col">Nombre</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Precio</th>
+        <th scope="col">Categoría</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -16,17 +17,18 @@
         <td>Nombre</td>
         <td>Descripcion</td>
         <td>Precio</td>
+        <td>Categoría</td>
         <!-- ACCIONES -->
         <td>
-            <button id="btn-acs" type="button" class="btn btn-warning"><mat-icon>edit</mat-icon></button>
-            <button id="btn-acs" type="button" class="btn btn-danger"><mat-icon>delete</mat-icon></button>
+            <button id="btn-acs" title="Editar" type="button" class="btn btn-outline-warning"><mat-icon>edit</mat-icon></button>
+            <button id="btn-acs" title="Eliminar" type="button" class="btn btn-outline-danger"><mat-icon>delete</mat-icon></button>
         </td>
       </tr>
     </tbody>
 </table>
 
 <!-- BOTÓN PARA AGREGAR PRODUCTOS -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
   Agregar un nuevo producto
 </button>
 
