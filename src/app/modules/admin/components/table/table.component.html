@@ -11,17 +11,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let col of coleccionProductos">
         <th scope="row">1</th>
-        <td>Imagen</td>
-        <td>Nombre</td>
-        <td>Descripcion</td>
-        <td>Precio</td>
-        <td>Categoría</td>
+        <td>
+          <img src="{{col.imagen}}" alt="{{col.alt}}" width="100px">
+        </td>
+        <td>{{col.nombre}}</td>
+        <td>{{col.descripcion}}</td>
+        <td>{{col.precio}}</td>
+        <td>{{col.categoria}}</td>
         <!-- ACCIONES -->
         <td>
-            <button id="btn-acs" title="Editar" type="button" class="btn btn-outline-warning"><mat-icon>edit</mat-icon></button>
-            <button id="btn-acs" title="Eliminar" type="button" class="btn btn-outline-danger"><mat-icon>delete</mat-icon></button>
+            <button id="btn-acs" title="Editar" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editarProducto">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button id="btn-acs" title="Eliminar" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto">
+              <mat-icon>delete</mat-icon>
+            </button>
         </td>
       </tr>
     </tbody>
@@ -77,8 +83,9 @@
         </div>
       </div>
 
+      <!-- ACCIONES DEL MODAL -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-success">Guardar</button>
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="agregarProducto()">Guardar</button>
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
