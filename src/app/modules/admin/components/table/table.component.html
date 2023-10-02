@@ -25,7 +25,7 @@
                 <button type="button" title="Editar" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editarProducto" (click)="mostrarEditar(col)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button type="button" title="Eliminar" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto">
+                <button type="button" title="Eliminar" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto" (click)="mostrarBorrar(col)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
@@ -139,3 +139,22 @@
 </div>
 
 <!-- Modal para ELIMINAR PRODUCTOS -->
+<div class="modal fade" *ngIf="modalVisibleProducto" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">¿Está seguro de eliminar el siguiente producto?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- MOSTRAMOS EL PRODUCTO QUE SE ELIMINARÁ -->
+            {{productoSeleccionado.nombre}}
+            <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" (click)="borrarProducto()">Eliminar</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+</div>
