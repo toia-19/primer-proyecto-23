@@ -22,7 +22,7 @@
         <td>{{col.categoria}}</td>
         <!-- ACCIONES -->
         <td>
-            <button id="btn-acs" title="Editar" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editarProducto">
+            <button id="btn-acs" title="Editar" type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editarProducto" (click)="mostrarEditar(col)">
               <mat-icon>edit</mat-icon>
             </button>
             <button id="btn-acs" title="Eliminar" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto">
@@ -91,3 +91,59 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL PARA EDITAR PRODUCTO -->
+<div class="modal fade" *ngFor="let col of coleccionProductos" id="editarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edite el siguiente producto:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div [formGroup]="producto" class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Ingrese nombre del producto:</label>
+          <input class="form-control" type="text" formControlName="nombre" placeholder="{{col.nombre}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese una imagen:</label>
+          <input class="form-control" type="text" formControlName="imagen" placeholder="{{col.imagen}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese texto alternativo de la imagen</label>
+          <input class="form-control" type="text" formControlName="alt" placeholder="{{col.alt}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese una descripción:</label>
+          <input class="form-control" type="text" formControlName="descripcion" placeholder="{{col.descripcion}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese el precio:</label>
+          <input class="form-control" type="number" formControlName="precio" placeholder="{{col.precio}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Seleccione una categoría:</label>
+          <select class="form-control" formControlName="categoria" class="form-select">
+            <option selected>Elija una opción</option>
+            <option value="collares">Collares</option>
+            <option value="juguetes">Juguetes</option>
+            <option value="indumentaria">Indumentaria</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ACCIONES DEL MODAL -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="editarProducto()">Guardar cambios</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ELIMINAR PARA EDITAR PRODUCTO -->
