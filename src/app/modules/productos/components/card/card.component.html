@@ -1,11 +1,47 @@
-<div class="card-group">
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let col of coleccionProductos">
+        <div class="card">
+            <img src="{{col.imagen}}" class="card-img-top" alt="{{col.alt}}">
+
+            <div class="card-body">
+                <h5 class="card-title">{{col.nombre}}</h5>
+
+                <p class="card-text">{{col.descripcion}}</p>
+                <p class="card-text">{{col.precio}}</p>
+
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#modalCard" (click)="mostrarVer(col)">
+                    Ver más
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL PARA VISUALIZAR PRODUCTO -->
+<div class="modal fade" *ngIf="modalVisible" id="modalCard" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{productoSeleccionado.nombre}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
+
+                <div class="mb-3">
+                    {{productoSeleccionado.descripcion}}
+                </div>
+                <div class="mb-3">
+                    {{productoSeleccionado.precio}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Agregar al
+                    carrito</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>

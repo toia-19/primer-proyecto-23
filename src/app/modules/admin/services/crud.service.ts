@@ -46,6 +46,7 @@ export class CrudService {
     return this.database.collection('productos').doc(idProducto).update(nuevaData);
   }
 
+  // envíamos el ID del producto
   eliminarProducto(idProducto: string){
     return new Promise((resolve, reject) =>{
       try{
