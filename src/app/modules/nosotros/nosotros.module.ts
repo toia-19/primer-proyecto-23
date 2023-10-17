@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NosotrosRoutingModule } from './nosotros-routing.module';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,11 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
   ],
   imports: [
     CommonModule,
-    NosotrosRoutingModule
+    NosotrosRoutingModule,
+    MatSlideToggleModule
+  ],
+  exports: [
+    MatSlideToggleModule
   ]
 })
 export class NosotrosModule { }

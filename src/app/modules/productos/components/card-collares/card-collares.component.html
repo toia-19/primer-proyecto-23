@@ -1,5 +1,5 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" *ngFor="let col of coleccionProductos">
+    <div class="col" *ngFor="let col of collares">
         <div class="card">
             <img src="{{col.imagen}}" class="card-img-top" alt="{{col.alt}}">
             <div class="card-body">
@@ -8,7 +8,7 @@
                 <p class="card-text">{{col.precio}}</p>
 
                 <!-- BOTÓN PARA ABRIR EL MODAL -->
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalCard" (click)="mostrarVer(col)">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalCardCollares" (click)="mostrarVer(col)">
                     Ver más
                 </button>
             </div>
@@ -17,7 +17,7 @@
 </div>
 
 <!-- MODAL PARA VISUALIZAR EL PRODUCTO QUE SE SELECCIONE -->
-<div class="modal fade" *ngIf="modalVisible" id="modalCard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" *ngIf="modalVisible" id="modalCardCollares" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

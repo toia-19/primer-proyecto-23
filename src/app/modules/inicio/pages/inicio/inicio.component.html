@@ -5,7 +5,7 @@
             <div *ngFor="let i of info" class="contenido">
                 <mat-card class="example-card">
                     <mat-card-header>
-                        <mat-card-title class="titulo">{{i.raza}}</mat-card-title>
+                        <mat-card-title class="titulo" [ngStyle]="{'color': i.raza === 'Golden' ? 'green' : 'red'}">{{i.raza}}</mat-card-title>
                     </mat-card-header>
                     <!-- APLICAMOS INTERPOLACIÓN ej: {{i.imagen}} -->
                     <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}"  width="100%">

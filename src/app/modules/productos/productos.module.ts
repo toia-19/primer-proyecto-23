@@ -7,6 +7,7 @@ import { CardComponent } from './components/card/card.component';
 import { IndumentariaComponent } from './pages/indumentaria/indumentaria.component';
 import { JuguetesComponent } from './pages/juguetes/juguetes.component';
 import { CollaresComponent } from './pages/collares/collares.component';
+import { CardCollaresComponent } from './components/card-collares/card-collares.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,16 @@ import { CollaresComponent } from './pages/collares/collares.component';
     CardComponent,
     IndumentariaComponent,
     JuguetesComponent,
-    CollaresComponent
+    CollaresComponent,
+    CardCollaresComponent
   ],
   imports: [
     CommonModule,
     ProductosRoutingModule
+  ],
+  exports: [
+    CardComponent,
+    CardCollaresComponent
   ]
 })
 export class ProductosModule { }
