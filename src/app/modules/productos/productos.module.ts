@@ -7,6 +7,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { CollaresComponent } from './pages/collares/collares.component';
 import { JuguetesComponent } from './pages/juguetes/juguetes.component';
 import { IndumentariaComponent } from './pages/indumentaria/indumentaria.component';
+import { CardCollaresComponent } from './components/card-collares/card-collares.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { IndumentariaComponent } from './pages/indumentaria/indumentaria.compone
     ProductosComponent,
     CollaresComponent,
     JuguetesComponent,
-    IndumentariaComponent
+    IndumentariaComponent,
+    CardCollaresComponent
   ],
   imports: [
     CommonModule,

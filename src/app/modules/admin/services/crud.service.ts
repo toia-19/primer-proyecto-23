@@ -17,10 +17,7 @@ export class CrudService {
   crearProducto(producto: Producto){
     return new Promise(async(resolve, reject) =>{
       try{
-        // creamos constante que guarde un nuevo ID
         const idProducto = this.database.createId();
-
-        // se lo asignamos al atributo ID de la interfaz Producto
         producto.idProducto = idProducto;
 
         const resultado = await this.productosCollection.doc(idProducto).set(producto)
